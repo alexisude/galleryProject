@@ -1,0 +1,120 @@
+html 
+  head 
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title Hello User
+    link(rel="stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js")
+    script(src="/client.js")
+    link(rel = 'stylesheet', type = 'text/css', href = '/styles.css')
+    body(id = "margin")
+        nav(class="navbar navbar-default")
+            div(class="container-fluid")
+                -let myString =  `${stuff.username}`
+                -let link = "http://localhost:3000/loginn/:"+  `${stuff.username}`
+                ul(class="nav navbar-nav")
+                    li(class="")
+                        a(href= `${link}`) Explore
+                    li(class="")
+                        a(href='/'+myString+"/search") Search
+                    li(class="")
+                        a(href='javascript:getFollowing("'+ myString +'")') Following
+                    li(class="")
+                        a(href='javascript:getLiked("'+ myString +'")') Liked
+                    li(class="")
+                        a(href='javascript:getReviewed("'+ myString +'")') Reviewed
+                    li(class="")
+                        a(href='javascript:getNotif("'+ myString +'")') Notifications
+                    -if(stuff.isArtist == false){
+                        li(class="")
+                            a(href='javascript:getArtistProfile("'+ myString +'")') Artist Mode
+                    -} else if (stuff.isArtist == true){
+                        li(class="")
+                            a(href='javascript:getArtistProfile("'+ myString +'")') Patron Mode
+                        li(class="")
+                            a(href='/'+myString+"/uploadArt") Upload Art
+                        li(class="")
+                            a(href='/'+myString+"/addworkshop") Host Workshop
+                    -}
+                    li(class="" )
+                        a(href="javascript:logout()") Log Out
+        select(id="search-select")
+            option(value="Artwork Name") Artwork Name
+            option(value="Artist's Name") Artist's Name
+            option(value="Category") Category
+            option(value="Medium") Medium
+        div(class="field")
+            input(type="text" id = "search" name="search" placeholder="Search" required)
+            p(id = "invalidsearch" class = "error")
+        button(id = `${value}` type = "submit" class ="like" onclick = 'verifySearch()') Search
+        div(id = "results")
+        h2(id = "message")
+        //- h1 #{stuff.artwork.name}
+        //- //- - let myString = stuff.artwork.name
+        //- //- - myString = myString.replaceAll(" ", "-");
+        //- -let value = stuff.artwork.name
+        //- -console.log(value, "value")
+        //- - value = value.replaceAll(" ", "-");
+        //- //- -}
+        //- img(src=stuff.artwork.image id = "bigger")
+        //- -let namespace = stuff.artwork.artist
+        //- -if (namespace.indexOf(' ') >0){
+        //-     -let fname = namespace.split(" ");
+        //-     - namespace = "http://localhost:3000/artist/"+fname[0]+"-"+fname[1];
+        //- - } else{
+        //-     - namespace = "http://localhost:3000/artist/"+namespace;
+        //- -}
+        //- //- div(class = "likediv")
+        //- //-     div(class="submit-btn")
+        //- br
+        //- -if (stuff.username != stuff.artwork.artist) {
+        //-     button(id = `${value}` type = "submit" class ="like" onclick = 'likeArt("'+ value +'")') Like
+        //- -}
+        //- p #{stuff.artwork.likes} likes
+        //- a(href = `${namespace}`)
+        //-     h3 Artist: #{stuff.artwork.artist}
+        //- h4 #{stuff.artwork.year}
+        //- -let change = (stuff.artwork.category).replaceAll(" ", "^");
+        //- -let pass = "category-"+change
+        //-  a(href ='/search/:'+pass)
+        //-     h4 Category: #{stuff.artwork.category}
+        //- -let change2 = (stuff.artwork.medium).replaceAll(" ", "^");
+        //- -let pass2 = "medium-"+change2
+        //- a(href ='/search/:'+pass2)
+        //-     h4 Medium: #{stuff.artwork.medium}
+        //- p #{stuff.artwork.description}
+        //- a(href = '/review/:'+ value id = "reviews") See all reviews
+        //- br
+        //- -if (stuff.username != stuff.artwork.artist) {
+        //-     //- label(for="text" value = "Add a review") Add a review
+        //-     input(type="text" id = "inputReview" placeholder="Enter Review" name="review" required)
+        //-     |
+        //-     | 
+        //-     |
+        //-     |
+        //-     |
+        //-     | 
+        //-     input(type="button" id = "inputReview"  onclick='submitReview("'+ value +'")' name="review" value = "Submit")
+        //- -}
+        //- br
+        //- br
+        //- form(class="form-popup" id="myReview")
+        //-     div(class="field")
+        //-         input(id = "inputReview" type="text" placeholder="Enter Review" name="review" required)
+        //-     div(class="field btn")
+        //-         input(type="submit" value = "Submit" class="btnreview" onclick='submitReview("'+ value +'")')
+            //- button(type="button" class="btncancel" onclick="closeForm()") Close
+
+    
+                //-         -let namespace = `${item.name}`
+                //- -let likid = namespace.split(" ").join("")
+                //- - namespace = "http://localhost:3000/artwork/"+namespace.split(" ").join("");
+                //- img(src=item.image)
+                //- br
+                //- a(href = `${namespace}` id = "artlink") #{item.name}
+                //- div(class = "likediv")
+                //-     div(class="submit-btn")
+                //-         button(id = `${likid}` type = "submit" class ="like" onclick = "likeArt()") Like
+                //- //- img(src= "../like.png" class = "like" id = `${likid}`)
+                //- br

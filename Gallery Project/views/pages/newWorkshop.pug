@@ -1,0 +1,34 @@
+html 
+  head 
+    title Login Here
+    script(src="/client.js")
+    link(rel = 'stylesheet', type = 'text/css', href = '/styles.css')
+    main
+      body(id = "body")
+          div(class = 'registerContent')
+            div(class = 'registertitle') 
+              h3 Workshop info 
+            div(class = 'inner')
+              div( class="register")
+                div(class="field")
+                  input(type="text" id = "workshopname" name="workshopname" placeholder="Workshop Name" required)
+                p(id = "invalidworkshopname" class = "error")
+                div(class="field") 
+                  input(type="text" id = "workshopdate" name="workshopdate" placeholder="Workshop Date" required)
+                p(id = "invalidworkshopdate" class = "error")
+                div(class="field") 
+                  input(type="text" id = "workshoplocation" name="workshoplocation" placeholder="Workshop Location" required)
+                p(id = "invalidworkshoplocation" class = "error")
+                button(type="button" value="Login" onclick = "verifyWorkshop()") Add Workshop
+                |
+                |
+                |
+                button(type="button" value="Login" onclick = "goBack()") Back
+                |
+                |
+                |
+                -let name = check.username;
+                button(type="button" value="Login" onclick = 'done("'+ name +'")') Done
+                //-   button(type="button" value="Cancel" onclick = "goBack()") Cancel  
+                //- -}
+                

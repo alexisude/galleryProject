@@ -1,0 +1,64 @@
+html 
+  head 
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title Hello User
+    link(rel="stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js")
+    script(src="/client.js")
+    link(rel = 'stylesheet', type = 'text/css', href = '/styles.css')
+    -let val;
+    body
+        nav(class="navbar navbar-default")
+            div(class="container-fluid")
+                -let myString =  `${searchResult.username}`
+                -let link = "http://localhost:3000/loginn/:"+  `${searchResult.username}`
+                -let like = "http://localhost:3000/login/:"+  `${searchResult.username}` +"/liked"
+                ul(class="nav navbar-nav")
+                    li(class="")
+                        a(href= `${link}`) Explore
+                    li(class="")
+                        a(href='/'+myString+"/search") Search
+                    li(class="")
+                        a(href='javascript:getFollowing("'+ myString +'")') Following
+                    li(class="")
+                        a(href='javascript:getLiked("'+ myString +'")') Liked
+                    li(class="")
+                        a(href='javascript:getReviewed("'+ myString +'")') Reviewed
+                    li(class="")
+                        a(href='javascript:getNotif("'+ myString +'")') Notifications
+                        //- -console.log(searchResult)
+                    -if(searchResult.isArtist == false){
+                        li(class="")
+                            //- -console.log("again", searchResult.isArtist)
+                            a(href='javascript:getArtistProfile("'+ myString +'")') Artist Mode
+                    -} else if (searchResult.isArtist == true){
+                        -console.log("aghain")
+                        li(class="")
+                            a(href='javascript:getArtistProfile("'+ myString +'")') Patron Mode
+                        li(class="")
+                            a(href='/'+myString+"/uploadArt") Upload Art
+                        li(class="")
+                            a(href='/'+myString+"/addworkshop") Host Workshop
+                    -}
+                    li(class="")
+                        a(href="javascript:logout()") Log Out  
+        h2 Art of #{searchResult.value} #{searchResult.para}
+        div(class = "container")
+            p #{searchResult}
+            //- each item in searchResult.art
+            //-     -let edit = `${item.name}`
+            //-     - edit = edit.replaceAll(" ", "-");
+            //-     -let namespace = `${item.name}`
+            //-     - namespace = "http://localhost:3000/artwork/"+edit;
+            //-     img(src=item.image)
+            //-     br
+            //-     a(href = `${namespace}` id = "artlink") #{item.name}
+            //-     div(class = "likediv")
+            //-         div(class="submit-btn")
+            //-             button(type = "submit" class ="like" onclick = 'likeArt("'+ edit +'")') Like
+            //-             p #{item.likes} likes
+            //-     //- img(src= "../like.png" class = "like" id = `${likid}`)
+            //-     br
+            //-     br

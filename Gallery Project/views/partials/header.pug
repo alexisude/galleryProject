@@ -1,0 +1,27 @@
+html 
+  head 
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title Hello User
+    link(rel="stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js")
+    script(src="/client.js")
+    link(rel = 'stylesheet', type = 'text/css', href = '/styles.css')
+    body()
+        //- - let item = #{abc}
+        //- - console.log(item, "asdfg")
+        - console.log("hello mate")
+        h1 Welcome #{item}
+        nav(class="navbar navbar-default")
+            div(class="container-fluid")
+            -let link = "http://localhost:3000/login/:" item.username
+                ul(class="nav navbar-nav")
+                    li(class="")
+                        a(href=`${link}`) Explore
+                    li(class="")
+                        a(href="#") Following
+                    li(class="")
+                        a(href="#") Liked
+                    li(class="left" id = "switch")
+                        a(href="javascript:switchAccount()") Artist

@@ -1,0 +1,43 @@
+html 
+  head 
+    title Login Here
+    script(src="/client.js")
+    link(rel = 'stylesheet', type = 'text/css', href = '/styles.css')
+    main
+      body(id = "body")
+          div(class = 'registerContent')
+            div(class = 'registertitle') 
+              h3 Art info 
+            div(class = 'inner')
+              div( class="register")
+                div(class="field")
+                  input(type="text" id = "artName" name="artName" placeholder="Art Name" required)
+                p(id = "invalidartName" class = "error")
+                div(class="field") 
+                  input(type="text" id = "artyear" name="artyear" placeholder="Year Published" required)
+                p(id = "invalidartyear" class = "error")
+                div(class="field") 
+                  input(type="text" id = "artcategory" name="artcategory" placeholder="Art Category" required)
+                p(id = "invalidartcategory" class = "error")
+                div(class="field") 
+                  input(type="text" id = "artmedium" name="artcategory" placeholder="Art Medium" required)
+                p(id = "invalidartmedium" class = "error")
+                div(class="field") 
+                  input(type="text" id = "artdes" name="artcategory" placeholder="Art description" required)
+                p(id = "invalidartdes" class = "error")
+                div(class="field") 
+                  input(type="text" id = "artImage" name="artcategory" placeholder="Image Source" required)
+                p(id = "invalidartImage" class = "error")
+                button(type="button" value="Login" onclick = "verifyUpload()") Upload
+                |
+                |
+                |
+                button(type="button" value="Login" onclick = "goBack()") Back
+                |
+                |
+                |
+                -let name = check.username;
+                button(type="button" value="Login" onclick = 'done("'+ name +'")') Done
+                //-   button(type="button" value="Cancel" onclick = "goBack()") Cancel  
+                //- -}
+                

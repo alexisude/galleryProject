@@ -1,0 +1,28 @@
+html 
+  head 
+    title Login Here
+    script(src="/client.js")
+    link(rel = 'stylesheet', type = 'text/css', href = '/styles.css')
+    main
+      body(id = "body")
+          div(class = 'registerContent')
+            div(class = 'registertitle')  
+              h1 Login
+            div(class = 'inner')
+              div( class="register")
+                div(class="field")
+                  //- p(id = "invalidLog")
+                  input(type="text" id = "loginUsername" name="username" placeholder="User Name" required)
+                  p(id = "invalidLog")
+                  br
+                  br
+                div(class="field") 
+                  input(type="password" id = "loginPass" name="password"  placeholder="Password" required)
+                  p(id = "invalidLogPass")
+                  br
+                  br
+                div(class="field btn")
+                  div(class="submit-btn")
+                    input(type="submit" value="Login" onclick = "validateUser()")
+                div(class="login-link") Not registered? 
+                    a(href="register") Register now

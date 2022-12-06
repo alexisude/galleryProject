@@ -1,0 +1,27 @@
+HOW TO INSTALL, INITIALIZE AND RUN DATABASE AND SERVER:
+- Download dependancies specified in the package.json file
+- run node server.js in your termial, this runs the database as well and inputs default users and the artwork from the gallery.json file
+    using the database-initalizer.js file
+- when the collections are dropped and the default values are put in, it should print 'connected um successfully' for each collection(twice)
+- once the previous line has gone through then we are can now put in localhost:3000 in our web browser and begin surfing.
+
+OVERALL DESIGN AND IMPLEMENTATION QUALITY
+- I used request for each page and status codes to tranfer information from my client to my server
+- I did not use routers even though it would have been a lot better to work with because I kept running into 
+    errors because of them and did not want to waste too much time. And having all my requests in the same server file
+    helped me to keep track of what I was doing and was easier for me to debug
+- I used the client side javascript to send some requests to links to help me edit the visual side of th pug file
+    like when the user does not input a value in a textbox and I colour the borders red and output a messesge
+- I used asynchronous operations for all of my requests as it was neccessary to use await, which was beneficial when I wanted to do anything involving 
+    databases
+- I implemented proper error handling but having a page that was rendered when a user tried to access a page but was not already
+    loggedin and this page had a button the redirected them to the login page and was implemedted in every of my pages
+-I assigned my req.seesion.loggedin to my user's name to keep track of who was logged in as using true or false could apply to every user
+    and was not very specific
+- if a user tried to go the register page or login page while already logged in, they where redirected to their explore page
+
+INTERFACE QUALITY
+- i implemented bootstrap for my navigation bar to help with it being ajusted according to the window size
+- The items on my screen are able to handle different window sizes
+- I have a link in my header to help my user move to which ever page they needed to go to
+-

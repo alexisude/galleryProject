@@ -1,0 +1,27 @@
+html 
+  head 
+    title Register Here
+    script(src="/client.js")
+    link(rel = 'stylesheet', type = 'text/css', href = '/styles.css')
+    main
+      body(id = "body")
+          div(class = 'registerContent')
+            div(class = 'registertitle')  
+              h1 Register
+            div(class = 'inner')
+              div(class="register")
+                div(class="field" id= "userNameCheck")
+                  input(type="text" id = "username" placeholder="User Name" required)
+                  p(id = "invalid")
+                  br
+                  br
+                div(class="field") 
+                  input(type="password" id = "password" placeholder="Password" required)
+                  p(id = "invalidPass")
+                  br
+                  br
+                div(class="field btn")
+                  div(class="submit-btn")
+                    input(type="submit" value="Register" onclick ="validateNewUser()")
+                div(class="login-link") Already registered? 
+                    a(href="login") Login now

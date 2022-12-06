@@ -1,0 +1,16 @@
+html 
+  head 
+    title Login Here
+    script(src="/client.js")
+    link(rel = 'stylesheet', type = 'text/css', href = '/styles.css')
+    main
+      body(id = "body")
+          div(class = 'registerContent')
+            div(class = 'registertitle')  
+                h1 Unauthorized
+                p You need to log in to access this page
+            div(class = 'inner')
+                div( class="register")
+                    div(class="field btn")
+                        div(class="submit-btn")
+                            input(type="submit" value="Login" onclick = "window.location.href = 'http://localhost:3000/login';") 

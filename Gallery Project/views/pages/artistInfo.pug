@@ -1,0 +1,85 @@
+html 
+  head 
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title Hello User
+    link(rel="stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js")
+    script(src="/client.js")
+    link(rel = 'stylesheet', type = 'text/css', href = '/styles.css')
+    body(id = "margin")
+        nav(class="navbar navbar-default")
+            div(class="container-fluid") 
+                //- -let val;
+                -let myString = `${stuff[0].username}`
+                -let link = "http://localhost:3000/loginn/:"+  `${stuff[0].username}`
+                -let like = "http://localhost:3000/login/:"+  `${stuff[0].username}` +"/liked"
+                ul(class="nav navbar-nav")
+                    li(class="")
+                        a(href= `${link}`) Explore
+                    li(class="")
+                        a(href='/'+myString+"/search") Search
+                    li(class="")
+                        a(href='javascript:getFollowing("'+ myString +'")') Following
+                    li(class="")
+                        a(href='javascript:getLiked("'+ myString +'")') Liked
+                    li(class="")
+                        a(href='javascript:getReviewed("'+ myString +'")') Reviewed
+                    li(class="")
+                        a(href='javascript:getNotif("'+ myString +'")') Notifications
+                    //- li(class="")
+                    //-     a(href='javascript:getEnrolled("'+ myString +'")') Enrolled Workshops
+                    -if(stuff[0].isArtist == false){
+                        //- -val = "Artist Mode";
+                        li(class="")
+                            //- -console.log("again", userinfo.isArtist)
+                            a(href='javascript:getArtistProfile("'+ myString +'")') Artist Mode
+                    -} else if (stuff[0].isArtist == true){
+                        //- -val = "Patron Mode"
+                        //- -console.log("aghain")
+                        li(class="")
+                            a(href='javascript:getArtistProfile("'+ myString +'")') Patron Mode
+                        li(class="")
+                            a(href='/'+myString+"/uploadArt") Upload Art
+                        li(class="")
+                            a(href='/'+myString+"/addworkshop") Host Workshop
+                    -}
+                    li(class="" ) 
+                        a(href="javascript:logout()") Log Out 
+        - let val = (stuff[0].artInfo.artist).replaceAll(" ", "-");
+        button(id ="" type = "submit" class ="like" onclick = 'followArtist("'+ val +'")') Follow
+        p #{stuff[0].followers} followers
+        h2 Works By #{stuff[0].artInfo.artist}
+        //- - let myString = stuff[0].artInfo.name
+        //- - myString = myString.replaceAll(" ", "-");
+        each item in stuff
+            //- p #{item.}
+            -let value = `${item.artInfo.name}`
+            -value = value.replaceAll(" ", "-");
+            -let namespace = `${item.artInfo.name}`
+            - namespace = "http://localhost:3000/artwork/"+namespace.replaceAll(" ", "-");
+            img(src=item.artInfo.image)
+            br
+            a(href = `${namespace}` id = "artlink") #{item.artInfo.name}
+            br
+            //- div(class = "likediv")
+            //-     div(class="submit-btn")
+            -if (stuff[0].username != stuff[0].artInfo.artist) {
+                button(id = `${value}` type = "submit" class ="like" onclick = 'likeArt("'+ value +'")') Like
+            -}
+            //- button(id = `${value}` type = "submit" class ="like" onclick = 'likeArt("'+ value +'")') Like
+            p #{item.artInfo.likes} likes
+            br
+        h2 Upcoming Workshops by #{stuff[0].artInfo.artist}
+        each val in stuff[0].details.workshops
+            h4 #{val}
+            |
+            |
+            |
+            |
+            |
+            |
+            -if (stuff[0].username != stuff[0].artInfo.artist) {
+                button(type = "submit" class ="like" onclick = 'enroll("'+ val+'%'+ stuff[0].artInfo.artist +'")') Enroll
+            -}
